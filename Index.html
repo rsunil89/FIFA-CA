@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!--
+    ============================================================
+    World Cup 2026 Tourist Guide
+    Author: Ryan S
+    Description: A Google Maps focused tourist guide website for
+                 the FIFA World Cup 2026 in Canada, USA, and Mexico.
+    ============================================================
+    -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    
+    <!-- Page Title -->
+    <title>World Cup 2026 - Tourist Guide</title>
+    
+    <!-- Meta Description for SEO -->
+    <meta name="description" content="Your ultimate tourist guide for the FIFA World Cup 2026 in Canada, USA, and Mexico. Find stadiums, hotels, restaurants, and attractions.">
+    
+    <!-- Meta Tags for PWA -->
+    <meta name="theme-color" content="#1a5276">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="WC2026 Guide">
+    <meta name="application-name" content="WC2026 Guide">
+    
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="manifest.json">
+    
+    <!-- Apple Touch Icon for iOS -->
+    <link rel="apple-touch-icon" href="icons/icon-192.svg">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" sizes="192x192" href="icons/icon-192.svg">
+    <link rel="icon" type="image/svg+xml" sizes="512x512" href="icons/icon-512.svg">
+    
+    <!-- CSS Stylesheet -->
+    <link rel="stylesheet" href="css/styles.css">
+    
+    <!-- Google Maps API -->
+    <!-- IMPORTANT: Replace YOUR_API_KEY with your actual Google Maps API key -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places&callback=Function.prototype" async defer></script>
+    
+    <!-- Application JavaScript -->
+    <script src="js/app.js" defer></script>
+</head>
+<body>
+    <!--
+    ============================================================
+    HEADER - Fixed navigation bar
+    ============================================================
+    -->
+    <header class="rs_header" id="rs_header">
+        <!-- Logo -->
+        <div class="rs_logo">
+            <span class="rs_logoIcon">⚽</span>
+            <span class="rs_logoText">WC<span class="rs_logoHighlight">2026</span> Guide</span>
+        </div>
+        
+        <!-- Desktop Navigation (hidden on mobile) -->
+        <nav class="rs_nav" id="rs_nav">
+            <a class="rs_navLink rs_navLinkActive" href="#home" onclick="rs_scrollToSection('rs_home')">Home</a>
+            <a class="rs_navLink" href="#map" onclick="rs_scrollToSection('rs_mapSection')">Map</a>
+            <a class="rs_navLink" href="#places" onclick="rs_scrollToSection('rs_placesSection')">Places</a>
+            <a class="rs_navLink" href="#route" onclick="rs_scrollToSection('rs_routeSection')">Route Planner</a>
+            <a class="rs_navLink" href="#tools" onclick="rs_scrollToSection('rs_toolsSection')">Tools</a>
+        </nav>
+        
+        <!-- Hamburger Menu Button (visible on mobile/tablet) -->
+        <button class="rs_hamburgerBtn" id="rs_hamburgerBtn" aria-label="Toggle navigation menu">
+            <span class="rs_hamburgerLine"></span>
+            <span class="rs_hamburgerLine"></span>
+            <span class="rs_hamburgerLine"></span>
+        </button>
+    </header>
+    
+    <!--
+    ============================================================
+    MOBILE MENU - Slide-out navigation for mobile/tablet
+    ============================================================
+    -->
+    <nav class="rs_mobileMenu" id="rs_mobileMenu">
+        <a class="rs_mobileNavLink rs_mobileNavLinkActive" href="#home" onclick="rs_scrollToSection('rs_home')">🏠 Home</a>
+        <a class="rs_mobileNavLink" href="#map" onclick="rs_scrollToSection('rs_mapSection')">🗺️ Map</a>
+        <a class="rs_mobileNavLink" href="#places" onclick="rs_scrollToSection('rs_placesSection')">📍 Places</a>
+        <a class="rs_mobileNavLink" href="#route" onclick="rs_scrollToSection('rs_routeSection')">🛣️ Route Planner</a>
+        <a class="rs_mobileNavLink" href="#tools" onclick="rs_scrollToSection('rs_toolsSection')">🔧 Tools</a>
+    </nav>
+    
+    <!--
+    ============================================================
+    MAIN CONTENT
+    ============================================================
+    -->
+    <main class="rs_main">
+        
+        <!--
+        ============================================================
+        HERO SECTION - Home
+        ============================================================
+        -->
+        <section class="rs_hero" id="rs_home">
+            <div class="rs_heroBackground"></div>
+            <div class="rs_heroContent">
+                <h1 class="rs_heroTitle">World Cup 2026</h1>
+                <p class="rs_heroSubtitle">Your Ultimate Tourist Guide to Canada, USA & Mexico</p>
+                <div class="rs_heroDate">
+                    📅 June 11 - July 19, 2026
+                </div>
+                <div class="rs_btnGroup rs_mtXl" style="justify-content: center;">
+                    <a class="rs_btn rs_btnPrimary" href="#map" onclick="rs_scrollToSection('rs_mapSection')">Explore the Map</a>
+                    <a class="rs_btn rs_btnSecondary" href="#places" onclick="rs_scrollToSection('rs_placesSection')">Discover Places</a>
+                </div>
+            </div>
+        </section>
+        
+        <!--
+        ============================================================
+        STATS SECTION - Quick facts about the World Cup
+        ============================================================
+        -->
+        <section class="rs_section rs_sectionDark rs_textCenter">
+            <div class="rs_statsGrid">
+                <div class="rs_statItem">
+                    <div class="rs_statNumber">3</div>
+                    <div class="rs_statLabel">Host Countries</div>
+                </div>
+                <div class="rs_statItem">
+                    <div class="rs_statNumber">16</div>
+                    <div class="rs_statLabel">Host Cities</div>
+                </div>
+                <div class="rs_statItem">
+                    <div class="rs_statNumber">48</div>
+                    <div class="rs_statLabel">Teams</div>
+                </div>
+                <div class="rs_statItem">
+                    <div class="rs_statNumber">104</div>
+                    <div class="rs_statLabel">Matches</div>
+                </div>
+            </div>
+        </section>
+        
+        <!--
+        ============================================================
+        MAP SECTION - Google Maps integration
+        ============================================================
+        -->
+        <section class="rs_section rs_sectionFull" id="rs_mapSection">
+            <div class="rs_container rs_mbMd rs_mtMd">
+                <h2 class="rs_heading2">🗺️ Interactive Map</h2>
+                <p class="rs_text">Explore stadiums, hotels, restaurants, and attractions across all three host countries.</p>
+            </div>
+            
+            <!-- Map Container -->
+            <div class="rs_mapContainer" id="rs_mapContainer">
+                <!-- Map Wrapper (Google Maps renders here) -->
+                <div class="rs_mapWrapper" id="rs_mapWrapper"></div>
+                
+                <!-- Map Controls - Show/Hide POI categories -->
+                <div class="rs_mapControls">
+                    <button class="rs_mapControlBtn rs_mapControlBtnActive" id="rs_stadiumToggle">
+                        🏟️ Stadiums
+                    </button>
+                    <button class="rs_mapControlBtn rs_mapControlBtnActive" id="rs_hotelToggle">
+                        🏨 Hotels
+                    </button>
+                    <button class="rs_mapControlBtn rs_mapControlBtnActive" id="rs_restaurantToggle">
+                        🍽️ Restaurants
+                    </button>
+                    <button class="rs_mapControlBtn rs_mapControlBtnActive" id="rs_attractionToggle">
+                        📍 Attractions
+                    </button>
+                </div>
+            </div>
+        </section>
+        
+        <!--
+        ============================================================
+        PLACES SECTION - Filterable content cards
+        ============================================================
+        -->
+        <section class="rs_section" id="rs_placesSection">
+            <h2 class="rs_heading2">📍 Discover Places</h2>
+            <p class="rs_text">Browse through our curated selection of World Cup venues, accommodations, dining, and attractions.</p>
+            
+            <!-- Filter Bar -->
+            <div class="rs_filterBar" id="rs_filterBar">
+                <!-- Filter buttons are dynamically generated by JavaScript -->
+            </div>
+            
+            <!-- Content Grid - Cards are dynamically generated by JavaScript -->
+            <div class="rs_cardGrid" id="rs_contentGrid">
+                <!-- Loading State -->
+                <div class="rs_loading" id="rs_loadingOverlay">
+                    <div class="rs_spinner"></div>
+                    <p>Loading amazing places...</p>
+                </div>
+            </div>
+        </section>
+        
+        <!--
+        ============================================================
+        ROUTE PLANNER SECTION
+        ============================================================
+        -->
+        <section class="rs_section rs_sectionLight" id="rs_routeSection">
+            <h2 class="rs_heading2">🛣️ Route Planner</h2>
+            <p class="rs_text">Plan your journey between multiple locations. Add stops from the map or places section above.</p>
+            
+            <div class="rs_routePlanner" id="rs_routePlanner">
+                <!-- Route Stops -->
+                <div id="rs_routeStops">
+                    <div class="rs_emptyState">
+                        <p>Click "Add to Route" on any place to start planning your journey!</p>
+                    </div>
+                </div>
+                
+                <!-- Action Buttons -->
+                <div class="rs_btnGroup">
+                    <button class="rs_btn rs_btnPrimary" id="rs_getDirectionsBtn">
+                        🗺️ Get Directions
+                    </button>
+                    <button class="rs_btn rs_btnSecondary" id="rs_clearRouteBtn" style="color: var(--rs_primary); border-color: var(--rs_primary);">
+                        🗑️ Clear Route
+                    </button>
+                </div>
+                
+                <!-- Directions Panel -->
+                <div class="rs_routeDirections" id="rs_routeDirections">
+                    <!-- Directions will be displayed here -->
+                </div>
+            </div>
+        </section>
+        
+        <!--
+        ============================================================
+        TOOLS SECTION - Translation & Currency APIs
+        ============================================================
+        -->
+        <section class="rs_section" id="rs_toolsSection">
+            <h2 class="rs_heading2">🔧 Travel Tools</h2>
+            <p class="rs_text">Useful tools for your World Cup journey - translate languages and convert currencies.</p>
+            
+            <div class="rs_toolsBar">
+                <!-- Language Translation Tool -->
+                <div class="rs_toolItem">
+                    <span class="rs_toolLabel">🌐 Translate:</span>
+                    <select class="rs_toolSelect" id="rs_translateFrom">
+                        <option value="en">English</option>
+                        <option value="es">Spanish</option>
+                        <option value="fr">French</option>
+                        <option value="de">German</option>
+                        <option value="it">Italian</option>
+                        <option value="pt">Portuguese</option>
+                        <option value="ja">Japanese</option>
+                        <option value="ko">Korean</option>
+                        <option value="zh">Chinese</option>
+                        <option value="ar">Arabic</option>
+                    </select>
+                    <span>→</span>
+                    <select class="rs_toolSelect" id="rs_translateTo">
+                        <option value="es">Spanish</option>
+                        <option value="en">English</option>
+                        <option value="fr">French</option>
+                        <option value="de">German</option>
+                        <option value="it">Italian</option>
+                        <option value="pt">Portuguese</option>
+                        <option value="ja">Japanese</option>
+                        <option value="ko">Korean</option>
+                        <option value="zh">Chinese</option>
+                        <option value="ar">Arabic</option>
+                    </select>
+                    <input class="rs_toolInput" type="text" id="rs_translateInput" placeholder="Enter text..." />
+                    <button class="rs_btn rs_btnPrimary rs_btnSmall" id="rs_translateBtn">Translate</button>
+                    <span class="rs_toolResult" id="rs_translateResult" style="display: none;"></span>
+                </div>
+            </div>
+            
+            <div class="rs_toolsBar">
+                <!-- Currency Conversion Tool -->
+                <div class="rs_toolItem">
+                    <span class="rs_toolLabel">💰 Convert:</span>
+                    <input class="rs_toolInput" type="number" id="rs_currencyAmount" placeholder="Amount" min="0" step="0.01" />
+                    <select class="rs_toolSelect" id="rs_currencyFrom">
+                        <option value="USD">USD ($)</option>
+                        <option value="EUR">EUR (€)</option>
+                        <option value="GBP">GBP (£)</option>
+                        <option value="CAD">CAD (C$)</option>
+                        <option value="MXN">MXN (MX$)</option>
+                        <option value="JPY">JPY (¥)</option>
+                        <option value="AUD">AUD (A$)</option>
+                        <option value="BRL">BRL (R$)</option>
+                    </select>
+                    <span>→</span>
+                    <select class="rs_toolSelect" id="rs_currencyTo">
+                        <option value="EUR">EUR (€)</option>
+                        <option value="USD">USD ($)</option>
+                        <option value="GBP">GBP (£)</option>
+                        <option value="CAD">CAD (C$)</option>
+                        <option value="MXN">MXN (MX$)</option>
+                        <option value="JPY">JPY (¥)</option>
+                        <option value="AUD">AUD (A$)</option>
+                        <option value="BRL">BRL (R$)</option>
+                    </select>
+                    <button class="rs_btn rs_btnGold rs_btnSmall" id="rs_currencyBtn">Convert</button>
+                    <span class="rs_toolResult" id="rs_currencyResult" style="display: none;"></span>
+                </div>
+            </div>
+        </section>
+        
+    </main>
+    
+    <!--
+    ============================================================
+    FOOTER
+    ============================================================
+    -->
+    <footer class="rs_footer">
+        <div class="rs_footerContent">
+            <p class="rs_footerText">⚽ World Cup 2026 Tourist Guide &copy; 2026</p>
+            <p class="rs_footerText">Your ultimate companion for the FIFA World Cup 2026 in Canada, USA & Mexico</p>
+            <div class="rs_footerLinks">
+                <a class="rs_footerLink" href="#home" onclick="rs_scrollToSection('rs_home')">Home</a>
+                <a class="rs_footerLink" href="#map" onclick="rs_scrollToSection('rs_mapSection')">Map</a>
+                <a class="rs_footerLink" href="#places" onclick="rs_scrollToSection('rs_placesSection')">Places</a>
+                <a class="rs_footerLink" href="#route" onclick="rs_scrollToSection('rs_routeSection')">Route Planner</a>
+                <a class="rs_footerLink" href="#tools" onclick="rs_scrollToSection('rs_toolsSection')">Tools</a>
+            </div>
+        </div>
+    </footer>
+    
+    <!--
+    ============================================================
+    TOAST NOTIFICATIONS CONTAINER
+    ============================================================
+    -->
+    <div class="rs_toastContainer" id="rs_toastContainer"></div>
+    
+</body>
+</html>
