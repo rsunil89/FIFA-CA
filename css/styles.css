@@ -745,8 +745,124 @@ input, select, textarea {
     background-color: rgba(26,35,126,0.05);
 }
 
+/* ----- PROFILE SECTION ----- */
+/* Login, Register, and Profile Management */
+.rs_profileSection {
+    padding: 40px 0;
+}
+
+.rs_profileContent {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.rs_profileTabs {
+    display: flex;
+    gap: 0;
+    margin-bottom: 0;
+    border-bottom: 2px solid var(--rs_borderColor);
+}
+
+.rs_profileTab {
+    padding: 12px 24px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--rs_textLight);
+    background: none;
+    border: none;
+    border-bottom: 3px solid transparent;
+    margin-bottom: -2px;
+    transition: var(--rs_transition);
+    cursor: pointer;
+}
+
+.rs_profileTab:hover {
+    color: var(--rs_primaryColor);
+}
+
+.rs_profileTabActive {
+    color: var(--rs_primaryColor);
+    border-bottom-color: var(--rs_primaryColor);
+}
+
+.rs_profileTabDanger {
+    color: var(--rs_errorColor);
+    margin-left: auto;
+}
+
+.rs_profileTabDanger:hover {
+    color: #b71c1c;
+}
+
+.rs_profileFormContainer {
+    background: var(--rs_lightColor);
+    border-radius: 0 0 var(--rs_radius) var(--rs_radius);
+    padding: 30px;
+    box-shadow: 0 2px 8px var(--rs_shadowColor);
+}
+
+.rs_profileCard {
+    text-align: center;
+}
+
+.rs_profileAvatar {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--rs_primaryColor), var(--rs_secondaryColor));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 20px;
+    box-shadow: 0 4px 12px rgba(26,35,126,0.3);
+}
+
+.rs_profileAvatarLetter {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--rs_lightColor);
+}
+
+.rs_profileDetails {
+    text-align: left;
+    margin-top: 20px;
+}
+
+.rs_profileDetail {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--rs_borderColor);
+    gap: 15px;
+}
+
+.rs_profileDetail:last-child {
+    border-bottom: none;
+}
+
+.rs_profileDetailLabel {
+    font-weight: 600;
+    color: var(--rs_textColor);
+    font-size: 0.9rem;
+    white-space: nowrap;
+    min-width: 120px;
+}
+
+.rs_profileDetailValue {
+    color: var(--rs_textLight);
+    font-size: 0.9rem;
+    text-align: right;
+    flex: 1;
+}
+
+.rs_profileMessages {
+    margin-top: 15px;
+}
+
 /* ----- API TOOLS SECTION ----- */
 /* Currency converter and language translator */
+
 .rs_apiTools {
     display: grid;
     grid-template-columns: 1fr 1fr;

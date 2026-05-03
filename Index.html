@@ -71,7 +71,9 @@
                 <a href="#rs_exploreSection" class="rs_navLink">Explore</a>
                 <a href="#rs_routeSection" class="rs_navLink">Route Planner</a>
                 <a href="#rs_toolsSection" class="rs_navLink">Travel Tools</a>
+                <a href="#rs_profileSection" class="rs_navLink" id="rs_navProfileLink">👤 Profile</a>
             </nav>
+
             
             <!-- Hamburger Menu Button - visible on mobile/tablet -->
             <button class="rs_hamburgerBtn" id="rs_hamburgerBtn" aria-label="Toggle navigation menu">
@@ -92,7 +94,9 @@
         <a href="#rs_exploreSection" class="rs_mobileNavLink">🔍 Explore</a>
         <a href="#rs_routeSection" class="rs_mobileNavLink">📍 Route Planner</a>
         <a href="#rs_toolsSection" class="rs_mobileNavLink">🛠 Travel Tools</a>
+        <a href="#rs_profileSection" class="rs_mobileNavLink" id="rs_mobileNavProfileLink">👤 Profile</a>
     </nav>
+
     
     <!-- Overlay for mobile menu -->
     <div class="rs_overlay" id="rs_overlay"></div>
@@ -354,7 +358,26 @@
             </div>
         </section>
 
+        <!-- ============================================================
+             PROFILE SECTION
+             Login, Register, and Profile Management
+             ============================================================ -->
+        <section id="rs_profileSection" class="rs_sectionAlt rs_profileSection">
+
+            <div class="rs_container">
+                <div class="rs_sectionTitle">
+                    <h2 class="rs_heading2">👤 My Profile</h2>
+                    <p class="rs_text">Create an account to save your preferences, plan your World Cup journey, and manage your profile.</p>
+                </div>
+                
+                <div id="rs_profileContent" class="rs_profileContent">
+                    <!-- Content is dynamically populated by profile.js -->
+                </div>
+            </div>
+        </section>
+
     </main>
+
 
     <!-- ============================================================
          MODAL
@@ -390,7 +413,9 @@
                 <a href="#rs_exploreSection" class="rs_footerLink">Explore Locations</a>
                 <a href="#rs_routeSection" class="rs_footerLink">Route Planner</a>
                 <a href="#rs_toolsSection" class="rs_footerLink">Travel Tools</a>
+                <a href="#rs_profileSection" class="rs_footerLink" id="rs_footerProfileLink">👤 My Profile</a>
             </div>
+
             
             <!-- Host Countries -->
             <div>
@@ -426,6 +451,17 @@
     <!-- Main Application JavaScript -->
     <script src="js/app.js"></script>
     
+    <!-- Profile Management JavaScript -->
+    <script src="js/profile.js"></script>
+    
+    <!-- Initialize Profile System -->
+    <script>
+        // Initialize the profile system when the page loads
+        document.addEventListener('DOMContentLoaded', () => {
+            rs_initProfile();
+        });
+    </script>
+    
     <!-- ============================================================
          PWA SERVICE WORKER REGISTRATION
          Allows the app to be downloaded as a Progressive Web App
@@ -444,6 +480,7 @@
             });
         }
     </script>
+
 
 </body>
 </html>
