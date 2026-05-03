@@ -5,7 +5,6 @@ import MapSection from './components/MapSection';
 import ExploreSection from './components/ExploreSection';
 import RoutePlanner from './components/RoutePlanner';
 import TravelTools from './components/TravelTools';
-import ProfileSection from './components/ProfileSection';
 import Modal from './components/Modal';
 import Footer from './components/Footer';
 import LoadingSpinner from './components/LoadingSpinner';
@@ -23,9 +22,7 @@ function App() {
     showHotels: true,
     showRestaurants: true,
     showAttractions: true,
-    routeStops: [],
-    currentUser: null,
-    isLoggedIn: false
+    routeStops: []
   });
 
   useEffect(() => {
@@ -61,7 +58,6 @@ function App() {
         <ExploreSection />
         <RoutePlanner />
         <TravelTools />
-        <ProfileSection />
       </main>
       <Modal />
       <Footer />

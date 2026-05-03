@@ -20,7 +20,6 @@ function Header() {
             <a href="#rs_exploreSection" className="rs_navLink" onClick={closeMobileNav}>Explore</a>
             <a href="#rs_routeSection" className="rs_navLink" onClick={closeMobileNav}>Route Planner</a>
             <a href="#rs_toolsSection" className="rs_navLink" onClick={closeMobileNav}>Travel Tools</a>
-            <a href="#rs_profileSection" className="rs_navLink" id="rs_navProfileLink" onClick={closeMobileNav}>👤 Profile</a>
           </nav>
           <button
             className={`rs_hamburgerBtn ${mobileNavOpen ? 'rs_hamburgerOpen' : ''}`}
@@ -41,7 +40,6 @@ function Header() {
         <a href="#rs_exploreSection" className="rs_mobileNavLink" onClick={closeMobileNav}>🔍 Explore</a>
         <a href="#rs_routeSection" className="rs_mobileNavLink" onClick={closeMobileNav}>📍 Route Planner</a>
         <a href="#rs_toolsSection" className="rs_mobileNavLink" onClick={closeMobileNav}>🛠 Travel Tools</a>
-        <a href="#rs_profileSection" className="rs_mobileNavLink" onClick={closeMobileNav}>👤 Profile</a>
       </nav>
 
       <div

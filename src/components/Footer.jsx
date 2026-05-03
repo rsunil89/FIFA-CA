@@ -20,7 +20,6 @@ function Footer() {
           <a href="#rs_exploreSection" className="rs_footerLink">Explore Locations</a>
           <a href="#rs_routeSection" className="rs_footerLink">Route Planner</a>
           <a href="#rs_toolsSection" className="rs_footerLink">Travel Tools</a>
-          <a href="#rs_profileSection" className="rs_footerLink" id="rs_footerProfileLink">👤 My Profile</a>
         </div>
         <div>
           <h4 className="rs_footerTitle">Host Countries</h4>
