@@ -735,6 +735,7 @@ function rs_showRouteLocationPicker() {
 /**
  * Adds a location to the route planner
  */
+
 function rs_addToRoute(itemId) {
     const item = rs_state.allData.find(d => d.id === itemId);
     if (!item) return;
@@ -856,17 +857,11 @@ function rs_calculateRoute() {
     });
 }
 
-// ============================================================
 // API TOOLS
-// ============================================================
-// This fulfills the requirement: "Make use of two appropriate APIs"
-// We use: 1. Currency Conversion API (exchangerate-api.com)
-//         2. Language Translation API (libretranslate.com)
 
-/**
- * Currency Converter - converts between USD, CAD, MXN, EUR, GBP
- * Uses the free ExchangeRate API
- */
+// We use: 1. Currency Conversion API 
+//         2. Language Translation API 
+
 async function rs_convertCurrency() {
     const amount = document.getElementById('rs_currencyAmount').value;
     const from = document.getElementById('rs_currencyFrom').value;
@@ -972,6 +967,7 @@ async function rs_translateText() {
         if (!response.ok) {
             throw new Error('Translation API request failed');
         }
+        
         
         const data = await response.json();
         resultEl.textContent = data.translatedText;
