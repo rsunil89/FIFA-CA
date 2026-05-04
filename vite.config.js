@@ -3,5 +3,5 @@ import react from '@vitejs/plugin-react'
 
 export default defineConfig({
   plugins: [react()],
-  base: '/FIFA-CA/'
+  base: '/D00281353/wordpress/FIFA/'
 })
