@@ -935,7 +935,7 @@ async function rs_convertCurrency() {
 
 /**
  * Language Translator - translates text between languages
- * Uses the free LibreTranslate API
+ * Uses Google Cloud Translation API
  */
 async function rs_translateText() {
     const text = document.getElementById('rs_translateText').value;
@@ -953,8 +953,8 @@ async function rs_translateText() {
     try {
         resultEl.textContent = 'Translating...';
         
-        // Try LibreTranslate API
-        const response = await fetch('https://libretranslate.de/translate', {
+        // Use Google Cloud Translation API
+        const response = await fetch('https://translation.googleapis.com/language/translate/v2', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -963,7 +963,8 @@ async function rs_translateText() {
                 q: text,
                 source: fromLang,
                 target: toLang,
-                format: 'text'
+                format: 'text',
+                key: 'AIzaSyDcjpaM-DtcXltzYbRV_s09ZI200yV2hao'
             })
         });
         
@@ -971,9 +972,8 @@ async function rs_translateText() {
             throw new Error('Translation API request failed');
         }
         
-        
         const data = await response.json();
-        resultEl.textContent = data.translatedText;
+        resultEl.textContent = data.data.translations[0].translatedText;
         
     } catch (error) {
         console.error('Translation error:', error);

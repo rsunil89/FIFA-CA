@@ -34,7 +34,7 @@ function ExploreSection({ data = [] }) {
             <div className="rs_card" key={`${item.name}-${index}`}>
               <div className="rs_cardImage">
                 {item.image ? (
-                  <img src={`${import.meta.env.BASE_URL}${item.image}`} alt={item.name} />
+                  <img src={item.image} alt={item.name} />
                 ) : (
                   <span>Image not available</span>
                 )}
