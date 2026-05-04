@@ -882,20 +882,22 @@ async function rs_convertCurrency() {
         resultEl.textContent = 'Converting...';
         
         // Fetch exchange rates from free API
-        const response = await fetch(`https://api.exchangerate-api.com/v4/latest/${from}`);
+        const response = await fetch('https://api.exchangerate-api.com/v4/latest/USD');
         
         if (!response.ok) {
             throw new Error('Currency API request failed');
         }
         
         const data = await response.json();
-        const rate = data.rates[to];
+        const fromRate = data.rates[from];
+        const toRate = data.rates[to];
         
-        if (!rate) {
+        if (!fromRate || !toRate) {
             throw new Error(`Cannot convert ${from} to ${to}`);
         }
         
-        const convertedAmount = (parseFloat(amount) * rate).toFixed(2);
+        // Convert: amount in USD = amount / fromRate, then to target = usdAmount * toRate
+        const convertedAmount = (parseFloat(amount) / fromRate * toRate).toFixed(2);
         
         // Format with locale for better readability
         const formattedAmount = parseFloat(amount).toLocaleString('en-US', { 
