@@ -8,7 +8,7 @@
   "homepage": "https://rsunil89.github.io/FIFA-CA",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "build": "vite build && copy public\\app.js dist\\app.js",
     "start": "node server.js",
     "preview": "vite preview",
     "predeploy": "npm run build",

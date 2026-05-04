@@ -50,12 +50,12 @@ function App() {
     <>
       {appState.loading && <LoadingSpinner />}
       {appState.error && <ErrorContainer message={appState.error} />}
-      
+
       <Header />
       <main>
         <HeroSection />
         <MapSection />
-        <ExploreSection />
+        <ExploreSection data={appState.filteredData} />
         <RoutePlanner />
         <TravelTools />
       </main>
