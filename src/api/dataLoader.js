@@ -5,8 +5,7 @@
 
 export async function loadData() {
   try {
-    const response = await fetch('/src/data/worldcup2026.json');
-    if (!response.ok) {
+const response = await fetch(`${import.meta.env.BASE_URL}data/worldcup2026.json`);    if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`);
     }
     const jsonData = await response.json();

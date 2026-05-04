@@ -1,57 +1,33 @@
 <!DOCTYPE html>
-<!-- ============================================================
-     FILE: index.html
-     AUTHOR: Ryan Stanley (rs)
-     DESCRIPTION: FIFA World Cup 2026 Tourist Guide - Main Page
-     A Google Maps focused website for tourists traveling to the 
-     2026 World Cup in Canada, USA, and Mexico.
-     ============================================================ -->
 <html lang="en">
 <head>
-    <!-- Meta tags for responsive design and PWA -->
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <meta name="description" content="Your ultimate tourist guide for the FIFA World Cup 2026 in Canada, USA, and Mexico. Find stadiums, hotels, restaurants, and attractions.">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="FIFA World Cup 2026 Tourist Guide for Canada, USA, and Mexico.">
     <meta name="theme-color" content="#1a237e">
-    
-    <!-- PWA Meta Tags -->
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <meta name="apple-mobile-web-app-title" content="WC2026 Guide">
-    <link rel="manifest" href="manifest.json">
-    
-    <!-- Page Title -->
+
+    <link rel="manifest" href="%BASE_URL%manifest.json">
+
     <title>World Cup 2026 Tourist Guide</title>
-    
-    <!-- Google Maps API - Loaded asynchronously -->
-    <!-- NOTE: Replace YOUR_API_KEY with a valid Google Maps API key -->
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCg30SQoh-yNU6eOOrWg_N6xhsoM3bn2mo&libraries=places&callback=Function.prototype" 
-            async defer></script>
+
+    <script
+        async
+        defer
+        src="https://maps.googleapis.com/maps/api/js?key=%VITE_GOOGLE_MAPS_API_KEY%&libraries=places">
+    </script>
 </head>
 <body>
-    <!-- React Root Mount Point -->
     <div id="root"></div>
 
-    <!-- ============================================================
-         PWA SERVICE WORKER REGISTRATION
-         Allows the app to be downloaded as a Progressive Web App
-         ============================================================ -->
     <script>
-        // Register the service worker for PWA functionality
         if ('serviceWorker' in navigator) {
             window.addEventListener('load', () => {
-                navigator.serviceWorker.register('sw_offline_first.js')
-                    .then((registration) => {
-                        console.log('Service Worker registered with scope:', registration.scope);
-                    })
-                    .catch((error) => {
-                        console.log('Service Worker registration failed:', error);
-                    });
+                navigator.serviceWorker.register(`${import.meta?.env?.BASE_URL || '/'}sw_offline_first.js`)
+                    .catch(error => console.log('Service Worker registration failed:', error));
             });
         }
     </script>
 
-    <!-- Vite entry point - loads React app -->
     <script type="module" src="/src/main.jsx"></script>
 </body>
 </html>
