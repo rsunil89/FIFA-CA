@@ -1,8 +1,3 @@
-/**
- * Data Loader API
- * Loads and combines JSON data.
- */
-
 export async function loadData() {
   try {
     const response = await fetch(`${import.meta.env.BASE_URL}data/worldcup2026.json`);

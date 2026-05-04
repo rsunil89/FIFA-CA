@@ -1,12 +1,3 @@
-/* ============================================================
-   FILE: styles.css
-   AUTHOR: Ryan Stanley (rs)
-   DESCRIPTION: Main stylesheet for FIFA World Cup 2026 Tourist Guide
-   All CSS class/id names use camelCase with 'rs_' prefix (my initials)
-   ============================================================ */
-
-/* ----- CSS RESET / NORMALIZE ----- */
-/* Ensures consistent styling across all browsers */
 *, *::before, *::after {
     margin: 0;
     padding: 0;
@@ -54,29 +45,25 @@ input, select, textarea {
     font-size: inherit;
 }
 
-/* ----- COLOR SCHEME & THEME VARIABLES ----- */
-/* World Cup 2026 inspired color palette */
 :root {
-    --rs_primaryColor: #1a237e;       /* Deep blue - primary brand color */
-    --rs_secondaryColor: #ff6f00;     /* Amber/orange - accent color */
-    --rs_accentColor: #00c853;        /* Green - success/positive */
-    --rs_darkColor: #0d1117;          /* Very dark - for headers/footers */
-    --rs_lightColor: #ffffff;         /* White - for backgrounds */
-    --rs_grayColor: #f5f5f5;          /* Light gray - for card backgrounds */
-    --rs_textColor: #333333;          /* Dark gray - main text */
-    --rs_textLight: #666666;          /* Medium gray - secondary text */
-    --rs_errorColor: #d32f2f;         /* Red - for error messages */
-    --rs_successColor: #2e7d32;       /* Dark green - for success messages */
-    --rs_borderColor: #e0e0e0;        /* Light gray - for borders */
-    --rs_shadowColor: rgba(0,0,0,0.1); /* Shadow color */
-    --rs_overlayColor: rgba(0,0,0,0.5); /* Overlay for modals */
-    --rs_transition: all 0.3s ease;   /* Standard transition */
-    --rs_radius: 8px;                 /* Standard border radius */
-    --rs_maxWidth: 1200px;            /* Max content width */
+    --rs_primaryColor: #1a237e;
+    --rs_secondaryColor: #ff6f00;
+    --rs_accentColor: #00c853;
+    --rs_darkColor: #0d1117;
+    --rs_lightColor: #ffffff;
+    --rs_grayColor: #f5f5f5;
+    --rs_textColor: #333333;
+    --rs_textLight: #666666;
+    --rs_errorColor: #d32f2f;
+    --rs_successColor: #2e7d32;
+    --rs_borderColor: #e0e0e0;
+    --rs_shadowColor: rgba(0,0,0,0.1);
+    --rs_overlayColor: rgba(0,0,0,0.5);
+    --rs_transition: all 0.3s ease;
+    --rs_radius: 8px;
+    --rs_maxWidth: 1200px;
 }
 
-/* ----- TYPOGRAPHY ----- */
-/* Consistent heading styles across the app */
 .rs_heading1 {
     font-size: 2.5rem;
     font-weight: 700;
@@ -116,15 +103,12 @@ input, select, textarea {
     color: var(--rs_textLight);
 }
 
-/* ----- LAYOUT ----- */
-/* Main container that centers content */
 .rs_container {
     max-width: var(--rs_maxWidth);
     margin: 0 auto;
     padding: 0 20px;
 }
 
-/* Flexbox utility classes */
 .rs_flexRow {
     display: flex;
     flex-direction: row;
@@ -154,7 +138,6 @@ input, select, textarea {
     gap: 20px;
 }
 
-/* Grid layout for cards */
 .rs_grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -162,8 +145,6 @@ input, select, textarea {
     padding: 20px 0;
 }
 
-/* ----- HEADER / NAVIGATION ----- */
-/* Top navigation bar - horizontal on desktop, hamburger on mobile */
 .rs_header {
     background: linear-gradient(135deg, var(--rs_primaryColor), #283593);
     color: var(--rs_lightColor);
@@ -195,7 +176,6 @@ input, select, textarea {
     font-size: 2rem;
 }
 
-/* Horizontal navigation menu - visible on tablets and desktop */
 .rs_nav {
     display: flex;
     align-items: center;
@@ -216,7 +196,6 @@ input, select, textarea {
     background-color: rgba(255,255,255,0.15);
 }
 
-/* Hamburger menu button - hidden on desktop, visible on mobile */
 .rs_hamburgerBtn {
     display: none;
     flex-direction: column;
@@ -238,7 +217,6 @@ input, select, textarea {
     transition: var(--rs_transition);
 }
 
-/* Hamburger animation when open */
 .rs_hamburgerOpen .rs_hamburgerLine:nth-child(1) {
     transform: rotate(45deg) translate(5px, 5px);
 }
@@ -251,7 +229,6 @@ input, select, textarea {
     transform: rotate(-45deg) translate(7px, -7px);
 }
 
-/* Mobile navigation menu - slides in from the right */
 .rs_mobileNav {
     display: none;
     position: fixed;
@@ -285,7 +262,6 @@ input, select, textarea {
     background-color: rgba(255,255,255,0.15);
 }
 
-/* Overlay when mobile menu is open */
 .rs_overlay {
     display: none;
     position: fixed;
@@ -301,8 +277,6 @@ input, select, textarea {
     display: block;
 }
 
-/* ----- HERO SECTION ----- */
-/* Large banner at the top of the home page */
 .rs_hero {
     background: linear-gradient(135deg, var(--rs_primaryColor) 0%, #283593 50%, var(--rs_secondaryColor) 100%);
     color: var(--rs_lightColor);
@@ -336,8 +310,6 @@ input, select, textarea {
     margin-bottom: 30px;
 }
 
-/* ----- BUTTONS ----- */
-/* Consistent button styles */
 .rs_btn {
     display: inline-block;
     padding: 12px 30px;
@@ -374,8 +346,6 @@ input, select, textarea {
     font-size: 0.85rem;
 }
 
-/* ----- CARDS ----- */
-/* Reusable card component for displaying content */
 .rs_card {
     background: var(--rs_lightColor);
     border-radius: var(--rs_radius);
@@ -460,8 +430,6 @@ input, select, textarea {
     font-weight: 600;
 }
 
-/* ----- MAP SECTION ----- */
-/* Google Maps container */
 .rs_mapContainer {
     width: 100%;
     height: 500px;
@@ -474,7 +442,6 @@ input, select, textarea {
     padding: 20px 0;
 }
 
-/* Map controls overlay */
 .rs_mapControls {
     display: flex;
     flex-wrap: wrap;
@@ -545,7 +512,6 @@ input, select, textarea {
     border-color: var(--rs_accentColor);
 }
 
-/* ----- CONTENT SECTIONS ----- */
 .rs_section {
     padding: 40px 0;
 }
@@ -560,7 +526,6 @@ input, select, textarea {
     margin-bottom: 30px;
 }
 
-/* ----- SEARCH BAR ----- */
 .rs_searchBar {
     display: flex;
     gap: 10px;
@@ -583,7 +548,6 @@ input, select, textarea {
     box-shadow: 0 0 0 3px rgba(26,35,126,0.1);
 }
 
-/* ----- FORMS ----- */
 .rs_formGroup {
     margin-bottom: 20px;
 }
@@ -625,8 +589,6 @@ input, select, textarea {
     border-color: var(--rs_primaryColor);
 }
 
-/* ----- ERROR HANDLING ----- */
-/* Consistent error styling across the app */
 .rs_error {
     color: var(--rs_errorColor);
     font-size: 0.85rem;
@@ -670,7 +632,6 @@ input, select, textarea {
     gap: 10px;
 }
 
-/* ----- ROUTE PLANNER ----- */
 .rs_routePlanner {
     background: var(--rs_lightColor);
     border-radius: var(--rs_radius);
@@ -745,8 +706,6 @@ input, select, textarea {
     background-color: rgba(26,35,126,0.05);
 }
 
-/* ----- PROFILE SECTION ----- */
-/* Login, Register, and Profile Management */
 .rs_profileSection {
     padding: 40px 0;
 }
@@ -860,9 +819,6 @@ input, select, textarea {
     margin-top: 15px;
 }
 
-/* ----- API TOOLS SECTION ----- */
-/* Currency converter and language translator */
-
 .rs_apiTools {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -898,7 +854,6 @@ input, select, textarea {
     color: var(--rs_primaryColor);
 }
 
-/* ----- MODAL ----- */
 .rs_modal {
     display: none;
     position: fixed;
@@ -993,7 +948,6 @@ input, select, textarea {
     gap: 5px;
 }
 
-/* ----- LOADING SPINNER ----- */
 .rs_spinner {
     display: flex;
     align-items: center;
@@ -1001,8 +955,7 @@ input, select, textarea {
     padding: 40px;
 }
 
-.rs_spinner::after {
-    content: '';
+.rs_spinnerCircle {
     width: 40px;
     height: 40px;
     border: 4px solid var(--rs_borderColor);
@@ -1012,265 +965,134 @@ input, select, textarea {
 }
 
 @keyframes rs_spin {
-    to { transform: rotate(360deg); }
+    to {
+        transform: rotate(360deg);
+    }
 }
 
-/* ----- FOOTER ----- */
+.rs_loadingOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--rs_overlayColor);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 3000;
+}
+
+.rs_loadingContent {
+    background: var(--rs_lightColor);
+    padding: 30px;
+    border-radius: var(--rs_radius);
+    text-align: center;
+}
+
+.rs_loadingText {
+    margin-top: 15px;
+    color: var(--rs_textLight);
+    font-size: 0.9rem;
+}
+
 .rs_footer {
     background: var(--rs_darkColor);
     color: var(--rs_lightColor);
-    padding: 40px 20px 20px;
-    margin-top: 40px;
+    padding: 40px 20px;
+    text-align: center;
 }
 
 .rs_footerContent {
     max-width: var(--rs_maxWidth);
     margin: 0 auto;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 30px;
-}
-
-.rs_footerTitle {
-    font-size: 1.1rem;
-    font-weight: 600;
-    margin-bottom: 15px;
-    color: var(--rs_secondaryColor);
 }
 
 .rs_footerText {
+    opacity: 0.8;
     font-size: 0.9rem;
-    color: #999;
-    line-height: 1.6;
+    margin-bottom: 10px;
+}
+
+.rs_footerLinks {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 15px;
 }
 
 .rs_footerLink {
-    display: block;
-    color: #999;
-    padding: 5px 0;
+    color: var(--rs_secondaryColor);
+    font-size: 0.9rem;
     transition: var(--rs_transition);
 }
 
 .rs_footerLink:hover {
-    color: var(--rs_secondaryColor);
+    color: var(--rs_lightColor);
 }
 
-.rs_footerBottom {
-    max-width: var(--rs_maxWidth);
-    margin: 20px auto 0;
-    padding-top: 20px;
-    border-top: 1px solid #333;
-    text-align: center;
-    font-size: 0.85rem;
-    color: #666;
-}
-
-/* ----- RESPONSIVE DESIGN ----- */
-
-/* TABLETS (600px to 768px) */
 @media (max-width: 768px) {
-    .rs_heading1 {
-        font-size: 2rem;
+    .rs_nav {
+        display: none;
     }
-    
-    .rs_heading2 {
-        font-size: 1.6rem;
+
+    .rs_hamburgerBtn {
+        display: flex;
     }
-    
+
+    .rs_mobileNav {
+        display: block;
+    }
+
     .rs_hero {
         padding: 60px 20px;
     }
-    
-    .rs_grid {
-        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+
+    .rs_heading1 {
+        font-size: 1.8rem;
     }
-    
+
+    .rs_heading2 {
+        font-size: 1.5rem;
+    }
+
+    .rs_grid {
+        grid-template-columns: 1fr;
+    }
+
     .rs_apiTools {
         grid-template-columns: 1fr;
     }
-    
-    .rs_mapContainer {
-        height: 400px;
-    }
-    
-    .rs_footerContent {
-        grid-template-columns: 1fr 1fr;
-    }
-    
-    .rs_nav {
-        display: none; /* Hide horizontal nav on tablets */
-    }
-    
-    .rs_hamburgerBtn {
-        display: flex; /* Show hamburger on tablets */
-    }
-    
-    .rs_mobileNav {
-        display: block; /* Enable mobile nav on tablets */
-    }
-}
 
-/* MOBILE PHONES (< 600px) */
-@media (max-width: 599px) {
-    .rs_heading1 {
-        font-size: 1.6rem;
-    }
-    
-    .rs_heading2 {
-        font-size: 1.3rem;
-    }
-    
-    .rs_heading3 {
-        font-size: 1.1rem;
-    }
-    
-    .rs_hero {
-        padding: 40px 15px;
-    }
-    
-    .rs_heroSubtitle {
-        font-size: 1rem;
-    }
-    
-    .rs_container {
-        padding: 0 15px;
-    }
-    
-    .rs_grid {
-        grid-template-columns: 1fr; /* Single column on mobile */
-        gap: 15px;
-    }
-    
-    .rs_mapContainer {
-        height: 300px; /* Smaller map on mobile */
-    }
-    
     .rs_mapControls {
         flex-direction: column;
         align-items: stretch;
     }
-    
+
+    .rs_toggleGroup {
+        margin-left: 0;
+    }
+
     .rs_filterGroup {
         justify-content: center;
     }
-    
-    .rs_toggleGroup {
-        margin-left: 0;
-        justify-content: center;
-    }
-    
-    .rs_apiTools {
-        grid-template-columns: 1fr;
-    }
-    
+
     .rs_searchBar {
         flex-direction: column;
     }
-    
-    .rs_cardImage {
-        height: 180px;
-    }
-    
-    .rs_footerContent {
-        grid-template-columns: 1fr; /* Single column footer on mobile */
-    }
-    
+
     .rs_modalContent {
         width: 95%;
         padding: 20px;
     }
-    
-    .rs_modalImage {
-        height: 180px;
-    }
-    
-    .rs_routePlanner {
-        padding: 15px;
-    }
-    
-    .rs_nav {
-        display: none; /* Hide horizontal nav on mobile */
-    }
-    
-    .rs_hamburgerBtn {
-        display: flex; /* Show hamburger on mobile */
-    }
-    
-    .rs_mobileNav {
-        display: block; /* Enable mobile nav on mobile */
-    }
-    
-    .rs_headerContent {
-        padding: 8px 15px;
-    }
-    
-    .rs_logo {
-        font-size: 1.2rem;
-    }
-    
-    .rs_section {
-        padding: 25px 0;
-    }
-    
-    .rs_sectionAlt {
-        padding: 25px 0;
-    }
-    
-    /* No tables on mobile */
-    table {
-        display: none;
-    }
 }
 
-/* LARGE SCREENS (> 768px) */
-@media (min-width: 769px) {
-    .rs_hamburgerBtn {
-        display: none; /* Hide hamburger on desktop */
+@media (min-width: 769px) and (max-width: 1024px) {
+    .rs_grid {
+        grid-template-columns: repeat(2, 1fr);
     }
-    
-    .rs_mobileNav {
-        display: none !important; /* Hide mobile nav on desktop */
-    }
-    
-    .rs_nav {
-        display: flex; /* Show horizontal nav on desktop */
-    }
-}
 
-/* Landscape mode on mobile */
-@media (max-height: 500px) and (orientation: landscape) {
-    .rs_hero {
-        padding: 30px 15px;
-    }
-    
-    .rs_heading1 {
-        font-size: 1.4rem;
-    }
-    
-    .rs_mapContainer {
-        height: 250px;
-    }
-    
-    .rs_modalContent {
-        max-height: 90vh;
-    }
-}
-
-/* ----- PRINT STYLES ----- */
-@media print {
-    .rs_header,
-    .rs_footer,
-    .rs_mapContainer,
-    .rs_hamburgerBtn,
-    .rs_mobileNav,
-    .rs_routePlanner,
     .rs_apiTools {
-        display: none !important;
-    }
-    
-    .rs_card {
-        break-inside: avoid;
-        box-shadow: none;
-        border: 1px solid #ddd;
+        grid-template-columns: 1fr 1fr;
     }
 }

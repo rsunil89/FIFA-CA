@@ -1,8 +1,3 @@
-/**
- * Custom hook for route planning
- * Manages route stops and calculates directions
- */
-
 export function addRouteStop(routeStops, item) {
   if (routeStops.find(s => s.id === item.id)) {
     return { success: false, error: 'This location is already in your route.' };

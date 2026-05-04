@@ -1,8 +1,3 @@
-/**
- * Currency Conversion API
- * Uses exchangerate-api.com for live rates with fallback
- */
-
 const fallbackRates = {
   USD: { EUR: 0.92, GBP: 0.79, CAD: 1.36, MXN: 17.15 },
   EUR: { USD: 1.09, GBP: 0.86, CAD: 1.48, MXN: 18.65 },
@@ -24,7 +19,6 @@ export async function convertCurrency(amount, from, to) {
   } catch (error) {
     console.error('Currency conversion error:', error);
     
-    // Fallback rates
     if (fallbackRates[from] && fallbackRates[from][to]) {
       return parseFloat(amount) * fallbackRates[from][to];
     }

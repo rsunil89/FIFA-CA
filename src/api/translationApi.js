@@ -1,8 +1,3 @@
-/**
- * Language Translation API
- * Uses LibreTranslate API for text translation
- */
-
 export async function translateText(text, sourceLang, targetLang) {
   try {
     const response = await fetch('https://libretranslate.de/translate', {
