@@ -2,7 +2,7 @@
     "name": "World Cup 2026 Tourist Guide",
     "short_name": "WC2026 Guide",
     "description": "Your ultimate tourist guide for the FIFA World Cup 2026 in Canada, USA, and Mexico",
-    "start_url": "/index.html",
+    "start_url": "/",
     "display": "standalone",
     "background_color": "#1a237e",
     "theme_color": "#1a237e",

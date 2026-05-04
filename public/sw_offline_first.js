@@ -6,30 +6,26 @@
    ============================================================ */
 
 // Define the cache name - change version to force update
-const rs_CACHE_NAME = 'worldcup2026-v1';
-
-// Define files to cache for offline use
-const rs_FILES_TO_CACHE = [
-    '/',
-    '/index.html',
-    '/app.js',
-    '/data/worldcup2026.json'
-];
+const rs_CACHE_NAME = 'worldcup2026-v2';
 
 // ============================================================
 // INSTALL EVENT
 // ============================================================
 // This runs when the service worker is first installed
-// We cache all the essential files for offline use
+// We cache the essential shell for offline use
 
 self.addEventListener('install', (event) => {
     console.log('[Service Worker] Installing...');
     
-    // Wait until all files are cached
+    // Wait until the shell is cached
     event.waitUntil(
         caches.open(rs_CACHE_NAME).then((cache) => {
-            console.log('[Service Worker] Caching app files');
-            return cache.addAll(rs_FILES_TO_CACHE);
+            console.log('[Service Worker] Caching app shell');
+            return cache.addAll([
+                '/',
+                '/index.html',
+                '/offline_message.html'
+            ]);
         }).then(() => {
             console.log('[Service Worker] Installation complete');
             return self.skipWaiting();
@@ -68,13 +64,39 @@ self.addEventListener('activate', (event) => {
 // FETCH EVENT
 // ============================================================
 // This runs every time the app makes a network request
-// We try to serve from cache first, then fall back to network
+// Strategy: Network First, fallback to Cache, then fallback page
 
 self.addEventListener('fetch', (event) => {
     // Only handle GET requests
     if (event.request.method !== 'GET') return;
     
-    // Strategy: Cache First, then Network
+    // For navigation requests (HTML pages), use Network First
+    if (event.request.mode === 'navigate') {
+        event.respondWith(
+            fetch(event.request)
+                .then((networkResponse) => {
+                    // Cache the latest version
+                    const responseToCache = networkResponse.clone();
+                    caches.open(rs_CACHE_NAME).then((cache) => {
+                        cache.put(event.request, responseToCache);
+                    });
+                    return networkResponse;
+                })
+                .catch(() => {
+                    // If network fails, try cache
+                    return caches.match(event.request).then((cachedResponse) => {
+                        if (cachedResponse) {
+                            return cachedResponse;
+                        }
+                        // If no cache, show offline page
+                        return caches.match('/offline_message.html');
+                    });
+                })
+        );
+        return;
+    }
+    
+    // For static assets (JS, CSS, images, data), use Cache First
     event.respondWith(
         caches.match(event.request).then((cachedResponse) => {
             // Return cached response if available
@@ -98,7 +120,8 @@ self.addEventListener('fetch', (event) => {
                 return networkResponse;
             }).catch((error) => {
                 console.log('[Service Worker] Fetch failed:', error);
-                // Could return a fallback page here
+                // For non-HTML requests, just fail silently
+                return new Response('Offline', { status: 503 });
             });
         })
     );

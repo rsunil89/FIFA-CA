@@ -16,6 +16,8 @@ app.get("*", (req, res) => {
   res.sendFile(path.resolve(appPath, "index.html"));
 });
 
-app.listen(PORT, () => {
+app.listen(PORT, "0.0.0.0", () => {
   console.log(`Deployment server running on port ${PORT}`);
+  console.log(`Access locally: http://localhost:${PORT}`);
+  console.log(`Access from other devices: http://YOUR_IP_ADDRESS:${PORT}`);
 });
