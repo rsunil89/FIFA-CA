@@ -3,5 +3,6 @@ import react from '@vitejs/plugin-react'
 
 export default defineConfig({
   plugins: [react()],
-  base: '/D00276979/'
+  base: '/',
+  publicDir: 'public'
 })
