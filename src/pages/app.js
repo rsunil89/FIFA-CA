@@ -19,7 +19,30 @@ const rs_state = {
     directionsService: null
 };
 
-const rs_BASE_PATH = window.location.pathname.includes('/FIFA-CA/') ? '/FIFA-CA' : '';
+/*
+  Fixed for:
+  - DkIT hosting: https://mysql06.comp.dkit.ie/D00281353/
+  - GitHub Pages: /FIFA-CA/
+  - Local testing
+*/
+const rs_BASE_PATH = (() => {
+    const path = window.location.pathname;
+
+    if (path.includes('/D00281353/')) {
+        return '/D00281353';
+    }
+
+    if (path.includes('/FIFA-CA/')) {
+        return '/FIFA-CA';
+    }
+
+    return '';
+})();
+
+function rs_getAssetPath(path) {
+    const cleanPath = path.startsWith('/') ? path.substring(1) : path;
+    return `${rs_BASE_PATH}/${cleanPath}`;
+}
 
 async function rs_initApp() {
     try {
@@ -40,23 +63,31 @@ async function rs_initApp() {
 
 async function rs_loadData() {
     try {
-        const response = await fetch(rs_BASE_PATH + '/data/worldcup2026.json');
+        const jsonUrl = rs_getAssetPath('data/worldcup2026.json');
+
+        console.log('Loading JSON from:', jsonUrl);
+
+        const response = await fetch(jsonUrl, {
+            cache: 'no-store'
+        });
+
         if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);
         }
+
         const jsonData = await response.json();
-        
+
         rs_state.allData = [
             ...jsonData.stadia.map(item => ({ ...item, type: 'stadium' })),
             ...jsonData.hotels.map(item => ({ ...item, type: 'hotel' })),
             ...jsonData.restaurants.map(item => ({ ...item, type: 'restaurant' })),
             ...jsonData.attractions.map(item => ({ ...item, type: 'attraction' }))
         ];
-        
+
         await rs_enhanceWithGooglePlaces();
-        
+
         rs_state.filteredData = [...rs_state.allData];
-        
+
         console.log(`Loaded ${rs_state.allData.length} locations total`);
     } catch (error) {
         console.error('Error loading data:', error);
@@ -708,7 +739,9 @@ async function rs_translateText() {
     try {
         resultEl.textContent = 'Translating...';
         
-        const response = await fetch('https://translation.googleapis.com/language/translate/v2', {
+        const apiKey = 'AIzaSyDcjpaM-DtcXltzYbRV_s09ZI200yV2hao';
+        
+        const response = await fetch(`https://translation.googleapis.com/language/translate/v2?key=${apiKey}`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -717,8 +750,7 @@ async function rs_translateText() {
                 q: text,
                 source: fromLang,
                 target: toLang,
-                format: 'text',
-                key: 'AIzaSyDcjpaM-DtcXltzYbRV_s09ZI200yV2hao'
+                format: 'text'
             })
         });
         

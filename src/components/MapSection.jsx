@@ -43,12 +43,7 @@ function MapSection() {
             <button className="rs_filterBtn" data-filter-type="country" data-filter-value="Canada">🇨🇦 Canada</button>
             <button className="rs_filterBtn" data-filter-type="country" data-filter-value="Mexico">🇲🇽 Mexico</button>
           </div>
-          <div className="rs_toggleGroup">
-            <button className="rs_toggleBtn rs_toggleBtnActive" data-toggle-type="stadiums">⚽ Stadiums</button>
-            <button className="rs_toggleBtn rs_toggleBtnActive" data-toggle-type="hotels">🏨 Hotels</button>
-            <button className="rs_toggleBtn rs_toggleBtnActive" data-toggle-type="restaurants">🍽 Restaurants</button>
-            <button className="rs_toggleBtn rs_toggleBtnActive" data-toggle-type="attractions">📍 Attractions</button>
-          </div>
+          
         </div>
         <div className="rs_mapWrapper">
           <div id="rs_map" className="rs_mapContainer" ref={mapRef}></div>

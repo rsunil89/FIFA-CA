@@ -40,24 +40,13 @@ function ExploreSection({ data = [] }) {
                 )}
               </div>
 
-              <div className="rs_cardBody">
-                <div className="rs_cardHeader">
+                <div className="rs_cardBody">
                   <h3>{item.name}</h3>
                   <span className="rs_badge">{item.type}</span>
-                </div>
-
-                <p>{item.description}</p>
-
-                <div className="rs_cardMeta">
+                  <p>{item.description}</p>
                   <span>📍 {item.city || item.location || 'Location unavailable'}</span>
-                  {item.capacity && <span>👥 {item.capacity} seats</span>}
                 </div>
 
-                <div className="rs_cardActions">
-                  <button className="rs_primaryBtn">View Details</button>
-                  <button className="rs_secondaryBtn">Add to Route</button>
-                </div>
-              </div>
             </div>
           ))}
         </div>

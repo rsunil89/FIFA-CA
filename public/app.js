@@ -40,8 +40,7 @@ async function rs_initApp() {
 
 async function rs_loadData() {
     try {
-        const response = await fetch(rs_BASE_PATH + '/data/worldcup2026.json');
-        if (!response.ok) {
+const response = await fetch('/D00281353/data/worldcup2026.json');        if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);
         }
         const jsonData = await response.json();
@@ -376,8 +375,7 @@ function rs_createCard(item) {
     const badgeClass = `rs_badge${item.type.charAt(0).toUpperCase() + item.type.slice(1)}`;
     
     card.innerHTML = `
-        <img class="rs_cardImage" src="${item.image}" alt="${item.name}" 
-             onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22800%22 height=%22200%22><rect fill=%22%23e0e0e0%22 width=%22800%22 height=%22200%22/><text fill=%22%23999%22 x=%22400%22 y=%22100%22 text-anchor=%22middle%22 dominant-baseline=%22middle%22 font-size=%2220%22>Image not available</text></svg>'">
+<img class="rs_cardImage" src="/D00281353/${item.image}" alt="${item.name}"             onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22800%22 height=%22200%22><rect fill=%22%23e0e0e0%22 width=%22800%22 height=%22200%22/><text fill=%22%23999%22 x=%22400%22 y=%22100%22 text-anchor=%22middle%22 dominant-baseline=%22middle%22 font-size=%2220%22>Image not available</text></svg>'">
         <div class="rs_cardBody">
             <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 8px;">
                 <h3 class="rs_cardTitle">${item.name}</h3>
@@ -440,7 +438,7 @@ function rs_openModal(itemId) {
     
     content.innerHTML = `
         <button class="rs_modalClose" onclick="rs_closeModal()">✕</button>
-        <img class="rs_modalImage" src="${item.image}" alt="${item.name}"
+        <img class="rs_modalImage" src="/D00281353/${item.image}" alt="${item.name}"
              onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22600%22 height=%22250%22><rect fill=%22%23e0e0e0%22 width=%22600%22 height=%22250%22/><text fill=%22%23999%22 x=%22300%22 y=%22125%22 text-anchor=%22middle%22 dominant-baseline=%22middle%22 font-size=%2220%22>Image not available</text></svg>'">
         <h2 class="rs_modalTitle">${item.name}</h2>
         ${metaHtml}
@@ -708,7 +706,9 @@ async function rs_translateText() {
     try {
         resultEl.textContent = 'Translating...';
         
-        const response = await fetch('https://translation.googleapis.com/language/translate/v2', {
+        const apiKey = 'AIzaSyDcjpaM-DtcXltzYbRV_s09ZI200yV2hao';
+        
+        const response = await fetch(`https://translation.googleapis.com/language/translate/v2?key=${apiKey}`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -717,8 +717,7 @@ async function rs_translateText() {
                 q: text,
                 source: fromLang,
                 target: toLang,
-                format: 'text',
-                key: 'AIzaSyDcjpaM-DtcXltzYbRV_s09ZI200yV2hao'
+                format: 'text'
             })
         });
         
@@ -787,32 +786,6 @@ function rs_setupEventListeners() {
         });
     });
     
-    const toggleBtns = document.querySelectorAll('.rs_toggleBtn');
-    toggleBtns.forEach(btn => {
-        btn.addEventListener('click', () => {
-            btn.classList.toggle('rs_toggleBtnActive');
-            
-            const toggleType = btn.getAttribute('data-toggle-type');
-            if (toggleType) {
-                switch(toggleType) {
-                    case 'stadiums':
-                        rs_state.showStadiums = !rs_state.showStadiums;
-                        break;
-                    case 'hotels':
-                        rs_state.showHotels = !rs_state.showHotels;
-                        break;
-                    case 'restaurants':
-                        rs_state.showRestaurants = !rs_state.showRestaurants;
-                        break;
-                    case 'attractions':
-                        rs_state.showAttractions = !rs_state.showAttractions;
-                        break;
-                }
-                rs_addMarkers();
-                rs_renderContent();
-            }
-        });
-    });
     
     const searchInput = document.getElementById('rs_searchInput');
     if (searchInput) {

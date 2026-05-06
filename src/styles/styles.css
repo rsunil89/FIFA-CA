@@ -485,33 +485,6 @@ input, select, textarea {
     border-color: var(--rs_primaryColor);
 }
 
-.rs_toggleGroup {
-    display: flex;
-    gap: 10px;
-    margin-left: auto;
-}
-
-.rs_toggleBtn {
-    padding: 6px 14px;
-    border-radius: 20px;
-    font-size: 0.8rem;
-    font-weight: 500;
-    background-color: var(--rs_grayColor);
-    color: var(--rs_textColor);
-    border: 1px solid var(--rs_borderColor);
-    transition: var(--rs_transition);
-}
-
-.rs_toggleBtn:hover {
-    background-color: var(--rs_borderColor);
-}
-
-.rs_toggleBtnActive {
-    background-color: var(--rs_accentColor);
-    color: var(--rs_lightColor);
-    border-color: var(--rs_accentColor);
-}
-
 .rs_section {
     padding: 40px 0;
 }
@@ -1067,10 +1040,6 @@ input, select, textarea {
     .rs_mapControls {
         flex-direction: column;
         align-items: stretch;
-    }
-
-    .rs_toggleGroup {
-        margin-left: 0;
     }
 
     .rs_filterGroup {
